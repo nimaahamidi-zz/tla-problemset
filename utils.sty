@@ -1,0 +1,69 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{utils}
+
+\RequirePackage{amsthm}
+\RequirePackage{xcolor}
+\RequirePackage{xepersian}
+
+% CHAPTER WITH HINTS
+
+\تر\@راهنمایی‌ها{}
+
+\فرمان‌نو{\فصل‌باراهنمایی}[1]
+{\فصل{#1}%
+\بگسترپس‌از\تر\بگسترپس‌از\@راهنمایی‌ها\بگسترپس‌از{\@راهنمایی‌ها\فصل{#1}}}
+
+\فرمان‌نو{\چاپ‌راهنمایی‌ها}{%
+\مقدارشمارنده{chapter}{0}%
+\@راهنمایی‌ها}
+
+% PROBLEM AND HINT
+\تعریف‌رنگ{سرسوال}
+{RGB}{2,92,113}
+\تعریف‌رنگ{سرراهنمایی}
+{RGB}{1,144,186}
+
+\newtheoremstyle{سوال}% name of the style to be used
+  {3pt}% spaceabove
+  {0.4cm}% spacebelow
+  {}% bodyfont
+  {}% indent
+  {\bfseries}% headfont
+  {}% headpunctuation
+  {0pt}% headspace; space after theorem head; " " = normal interword space
+  {\hskip-2.3cm\makebox[2cm]{\color{سرسوال}\rule[1em]{2cm}{2pt}\hskip-2cm\rule[-0.5em]{2cm}{1pt}\hskip-2cm\color{سرسوال}\thmname{#1}\thmnumber{ #2}\hfill}\hskip0.3cm\thmnote{\color{سرسوال}(#3) }}
+
+\newtheoremstyle{راهنمایی}% name of the style to be used
+  {3pt}% spaceabove
+  {0.4cm}% spacebelow
+  {}% bodyfont
+  {}% indent
+  {\bfseries}% headfont
+  {}% headpunctuation
+  {0pt}% headspace; space after theorem head; " " = normal interword space
+  {\hskip-2.3cm\makebox[2cm]{\color{سرراهنمایی}\rule[1em]{2cm}{2pt}\hskip-2cm\rule[-0.5em]{2cm}{1pt}\hskip-2cm\thmname{#1}\thmnumber{ #2}\hfill}\hskip0.3cm\thmnote{\color{سرراهنمایی}(#3) }}
+
+\theoremstyle{سوال}
+\قضیه‌جدید{سوال}{سوال}[chapter]
+ 
+ \theoremstyle{راهنمایی}
+\قضیه‌جدید{محیط‌راهنمایی}{راهنمایی}[chapter]
+
+\فرمان‌نو{\راهنمایی}[1]{
+
+
+\بگسترپس‌از\تر\بگسترپس‌از\@راهنمایی‌ها\بگسترپس‌از{\@راهنمایی‌ها
+
+
+\شروع{محیط‌راهنمایی}
+یب
+\پایان{محیط‌راهنمایی}
+
+
+
+}
+
+
+
+
+}
