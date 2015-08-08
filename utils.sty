@@ -6,12 +6,16 @@
 \RequirePackage{xepersian}
 
 % CHAPTER WITH HINTS
+\بگسترپس‌از%
+\protected%
+\بگسترپس‌از\تر\بگسترپس‌از\فصل‌امن\بگسترپس‌از{\فصل}
 
 \تر\@راهنمایی‌ها{}
 
+
 \فرمان‌نو{\فصل‌باراهنمایی}[1]
 {\فصل{#1}%
-\بگسترپس‌از\تر\بگسترپس‌از\@راهنمایی‌ها\بگسترپس‌از{\@راهنمایی‌ها\فصل{#1}}}
+\ترگع\@راهنمایی‌ها{\@راهنمایی‌ها\فصل‌امن{#1}}}
 
 \فرمان‌نو{\چاپ‌راهنمایی‌ها}{%
 \مقدارشمارنده{chapter}{0}%
@@ -37,6 +41,16 @@
   {\addtocounter{problemno}{1}\hskip-2.3cm\makebox[2cm]{\color{سرسوال}\expandafter\nop{problem-\arabic{problemno}}\rule[1em]{2cm}{2pt}\hskip-2cm\rule[-0.5em]{2cm}{1pt} \hskip-2cm%
   \color{سرسوال}\expandafter\hyperlink{hint-\arabic{problemno}}{\thmname{#1}\thmnumber{ #2}}\hfill}\hskip0.3cm\thmnote{\color{سرسوال}(#3)}}
 
+
+\protected\def\hintheader#1{%
+\expandafter\nop{hint-\شماره‌سوال}\hskip-2.8cm\makebox[2.5cm]{\color{سرراهنمایی}\rule[1em]{2.5cm}{2pt}\hskip-2.5cm\rule[-0.5em]{2.5cm}{1pt}\hskip-2.5cm%
+\expandafter\hyperlink{problem-\شماره‌سوال}{راهنمایی #1}%
+\hfill}\hskip0.3cm
+%\thmnote{\color{
+%سرراهنمایی}
+%(#3)}%
+}
+
 \newtheoremstyle{راهنمایی}% name of the style to be used
   {3pt}% spaceabove
   {0.4cm}% spacebelow
@@ -45,21 +59,24 @@
   {\bfseries}% headfont
   {}% headpunctuation
   {0pt}% headspace; space after theorem head; " " = normal interword space
-  {\expandafter\nop{hint-\arabic{problemno}}\hskip-2.8cm\makebox[2.5cm]{\color{سرراهنمایی}\rule[1em]{2.5cm}{2pt}\hskip-2.5cm\rule[-0.5em]{2.5cm}{1pt}\hskip-2.5cm%
-  \expandafter\hyperlink{problem-\arabic{problemno}}{\thmname{#1}\thmnumber{ #2}}%
-  \hfill}\hskip0.3cm\thmnote{\color{سرراهنمایی}(#3)}}
+  {\hintheader{#2}}
 
+\protected%
+\تر\دستورمحیط‌راهنمایی#1#2%
+{\تر\شماره‌سوال{#2}
+\شروع{محیط‌راهنمایی}%
+#1%
+\پایان{محیط‌راهنمایی}%
+}
 \theoremstyle{سوال}
 \قضیه‌جدید{سوال}{سوال}[chapter]
  
- \theoremstyle{راهنمایی}
+\theoremstyle{راهنمایی}
 \قضیه‌جدید{محیط‌راهنمایی}{راهنمایی}[chapter]
 
 \فرمان‌نو{\راهنمایی}[1]{
-\بگسترپس‌از\تر\بگسترپس‌از\@راهنمایی‌ها\بگسترپس‌از{\@راهنمایی‌ها
-
-\تر\ورودی‌فرمان{#1}
-\شروع{محیط‌راهنمایی}
-\ورودی‌فرمان
-\پایان{محیط‌راهنمایی}
+\protected%
+\تر\ورودی‌فرمان{#1}%
+\ترگع\@راهنمایی‌ها{\@راهنمایی‌ها
+\دستورمحیط‌راهنمایی{\ورودی‌فرمان}{\عربی{problemno}}
 }}
